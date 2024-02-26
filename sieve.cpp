@@ -1,3 +1,5 @@
+
+// for checking primes , and marking them in a
 const int N = 1e6;
 vector<bool> a(N+1, 1);
 
@@ -18,3 +20,22 @@ void sieve()
         }
     }
 }
+
+
+// sieve for calculating number of divisiors
+ll divisors[N + 1];
+for (int i = 1; i <= n; ++i){
+     for (int j = i; j <= n; j += i){
+          ++divisors[j];    
+     }
+}
+
+// sieve for sum of divisors of a number
+ll sumdiv[n + 1];
+for (int i = 1; i <= n; ++i)
+ for (int j = i; j <= n; j += i)
+  sumdiv[j] += i;
+
+
+
+
