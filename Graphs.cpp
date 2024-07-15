@@ -1,3 +1,5 @@
+// This File contains standard template for DFS, BFS , Dijkstra , DSU
+
 // DFS start
 const int N = 1e4;
 vector<int>graph[N];
@@ -19,6 +21,44 @@ void dfs(int v) {
 }
 // DFS end
 
+
+// Dijkstra Algo
+const int N = 1e5 + 10;
+const int INF = 1e9 + 10;
+vector <pair<int, int>> g[N];
+// in graph I/P first element of pair be vertex to which g[i] is connected, second element is wt;
+
+void dijkstra(int source) {
+    vector<int> dis(N, INF);
+    vector<int> vis(N, 0);
+
+    set<pair<int, int>> st;
+    // first element of set is distance from source , second element is the node no.
+    st.insert({ 0,source });
+    dis[source] = 0;
+    vis[source] = 1;
+
+
+    while (!st.empty()) {
+        int v = st.begin()->second;
+        int v_dis = st.begin()->first;
+        st.erase(st.begin());
+
+        if (vis[v])continue;
+        vis[v] = 1;
+
+
+        for (auto& child : g[v]) {
+            int child_v = child.first;
+            int wt = child.second;
+
+            if (dis[child_v] > dis[v] + wt) {
+                dis[child_v] = dis[v] + wt;
+                st.insert({ dis[child_v],child_v });
+            }
+        }
+    }
+}
 
 // optmised DSU 
 const int N = 2e5 + 10;
@@ -45,4 +85,5 @@ void Union(int a, int b) {
     sz[a] += sz[b];
 }
 // DSU end
+
 
