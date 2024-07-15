@@ -26,5 +26,11 @@ Now the node with max depth would be for sure one endpoint of the diameter, call
 Now take mx_node as source and recalculate the depth of each node using DFS. Now the max depth you get in this array would be diameter of tree.
 </li>
 
+<li>
+Floyd Warshall Algo: <br/>
+updating all pairwise distance , such that if addition of kth node would affect our dis[i][j], 
+then we would update our dis[i][j] = dis[i][k]+ dis[k][j];
+if addition of kth node wont give us any shorter path , dis[i][j] wont be affected;
+</li>
   
 </ul>
