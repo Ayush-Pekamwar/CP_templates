@@ -22,6 +22,35 @@ void dfs(int v) {
 // DFS end
 
 
+
+// BFS Algo
+const int N = 1e5 + 10;
+vector<int> g[N];
+vector<int> level(N, 0), vis(N, 0);
+
+void bfs(int source) {
+    queue<int>q;
+    q.push(source);
+    vis[source] = 1;
+    level[source] = 0;
+
+    while (!q.empty()) {
+        int cur = q.front();
+        q.pop();
+        for (auto child : g[cur]) {
+            if (vis[child])  continue;
+
+            q.push(child);
+            vis[child] = 1;
+            level[child] = level[cur] + 1;
+        }
+    }
+    // TC - O(N+M);
+}
+//BFS end
+
+
+
 // Dijkstra Algo
 const int N = 1e5 + 10;
 const int INF = 1e9 + 10;
@@ -59,6 +88,9 @@ void dijkstra(int source) {
         }
     }
 }
+
+
+
 
 // optmised DSU 
 const int N = 2e5 + 10;
