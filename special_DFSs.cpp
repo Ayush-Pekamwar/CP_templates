@@ -15,15 +15,16 @@ void dfs(vector<vector<char>>& grid, int i, int j){
 }
 
 // DFS on Tree to get parent array
-void dfsToGetPar(vector<int>* g, vector<int>& par, int u, int p) {
+void dfsToGetPar(vector<int>* g, vector<int>& par, int u, int p = -1) {
+    par[u] = p;
     for (auto child : g[u]) {
         if (child == p) {
-            par[u] = p;
             continue;
         }
         dfsToGetPar(g, par, child, u);
     }
 }
+
 
 // DFS on Tree to fill Height and Depth of Node array
 void dfs(vector<int>* g, int* par, int u) {  
