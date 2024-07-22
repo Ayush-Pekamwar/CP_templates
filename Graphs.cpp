@@ -119,3 +119,42 @@ void Union(int a, int b) {
 // DSU end
 
 
+// Bellman Ford Algorithm
+// returns shortest distance from source node to all other nodes
+// handles negetive edges and can detect negetive edge cycles
+ vector<int> bellman_ford(int n , vector<vector<int>>& edges, int src) {
+        // Code here
+        int inf = 1e8;
+        vector<int> dis(n,inf);
+        
+        dis[src]=0;
+        for(int i=0 ; i<n ; i++){
+            for(int j=0 ; j<edges.size() ; j++){
+                int u = edges[j][0], v = edges[j][1];
+                int wt = edges[j][2];
+                
+                if(dis[u]==inf) continue;
+                
+                if(dis[u]+wt < dis[v]){
+                    dis[v] = dis[u]+ wt;
+                }
+            }
+        }
+        
+        // checking for negetive cycle in this graph
+        for(int j=0 ; j<edges.size() ; j++){
+            int u = edges[j][0], v = edges[j][1];
+            int wt = edges[j][2];
+            if(dis[u]==inf) continue;
+            
+            // if dis[v] gets updated even after n-1 iterations 
+            //then certainlly there exists a negetive cycle
+            if(dis[u]+wt < dis[v]){
+                return {-1};
+            }
+        }
+        
+        return dis;
+    }
+
+
