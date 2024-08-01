@@ -128,7 +128,7 @@ void Union(int a, int b) {
         vector<int> dis(n,inf);
         
         dis[src]=0;
-        for(int i=0 ; i<n ; i++){
+        for(int i=0 ; i<n-1 ; i++){
             for(int j=0 ; j<edges.size() ; j++){
                 int u = edges[j][0], v = edges[j][1];
                 int wt = edges[j][2];
